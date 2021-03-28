@@ -15,9 +15,22 @@
 
     <div id="app">
         <p></p>
-        <button>click me</button>
+        <!--<button onclick="popupAction();" id="btn_click">click me</button>-->
+        <button  id="btn_click">click me</button>
     </div>
 
 </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+</script>
+<script>
+    $("#btn_click").click(function(){
+        alert("hi");
+    });
+    //function popupAction(){
+     //   alert("hi");
+    //}
+</script>

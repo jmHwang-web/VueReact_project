@@ -16,6 +16,7 @@
 <body>
     <xmp>
         Vue Reactivity의 동작 원리에 대해서 배운다.
+        MVVM의 ViewModel 객체를 어떻게 자바스크립트에서 구현하나?
 
         Object.defineProperty()를 이용해서 양방향 바인딩의 개념을 익힌다.
         Object.defineProperty() 메서드의 get, set 설정 방법을 학습한다.
@@ -63,8 +64,47 @@
     <h2 id="app2">
         이자리에 있는 정보를 가져오다.
     </h2>
+    <button onclick="app2BtnClick()">클릭</button>
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
+ <!-- vue 플러그인 임포트   -->
+ <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+ <script>
+     new Vue({
+         /* edtmc^2w */
+         el: "#app1",
+         data: {
+             msg: "Hello",
+         },
+     });
+
+     var app2 = document.getElementById("app2"); //화면(=view)
+     var data = {}; //데이타(=model)
+     //자바스크립트로 ViewMode 객체 구현
+     Object.defineProperty(
+         data,
+         "msg",
+         {
+             get:function(){
+                return app2.innerHTML; //화면의 값을 가져오기
+             },
+             set:function(value){
+                debugger;
+                 app2.innerHtml = value;
+             }
+         }
+     );
+
+     debugger;
+     console.log(data.msg); //get
+    data.msg = "aaa"; //데이터에 값을 넣으면 화면은 어떻게 될까요?
+
+
+    function app2BtnClick(event){
+        debugger;
+        data["msg"] = "abc";
+    }
+ </script>

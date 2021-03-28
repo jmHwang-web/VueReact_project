@@ -243,3 +243,70 @@
         </div>
     </body>
 </html>
+<script>
+    //객체 리터럴 ({}) 을 이용한 객체 선언
+    var foo = {
+        name:'foo',
+        age:30,
+        array:[1,4,5,5,],
+        run : function(params){
+            return this.name; //==return 'foo'
+        }
+    }
+/*
+
+*/
+    console.log(foo.name);
+
+    /*
+
+    */
+    console.log( foo["age"]);
+
+    /*
+    foo 객체에 키명이 gender인 프로퍼티 설정하시오
+    foo 객체의 gender값을 console.log()로 출력하시오.
+    */
+   foo.name = "bar";
+   console.log(foo.name);
+
+   /*
+    Delete. 삭제
+   객체에서 프로퍼티(속성)을 삭제하려면 delete 연산자를 사용한다.
+   */
+  delete foo.gender;
+  debugger;
+
+  console.log(foo.gender); //오류 발생
+  console.log(foo["gender"]); //오류 발생
+
+  /*
+  문제1. 다음의 그림을 자바스크립트 객체로 만드시오
+  */
+  var Dog = {
+      name : 'Fido',
+       weight : 40,
+       breed:'Mixed',
+       loves:['walkx','fetching balls']
+   }
+   debugger;
+   console.log(Dog);
+
+   /*
+   문제2 다음의 표를 자바스크립트 객체로 만드시오
+   */
+
+   var Test = {
+        name : 'Nature of Code',
+        price: 30000,
+        writer:'다니엘',
+        ISBN:9788968481901,
+        page:'620페이지'
+   }
+   debugger;
+//   console.log(Test);
+   console.log(foo.toString());
+
+
+
+</script>

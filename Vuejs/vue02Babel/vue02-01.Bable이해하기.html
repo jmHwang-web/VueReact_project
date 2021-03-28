@@ -40,6 +40,28 @@
 </html>
 
 <!-- ES5 사용하기 -->
+<script type="text/babel">
+    var name = "abc";
+    var age = 10;
+    var getMessage = function getMessage(params){
+        return "Hello, ES5 world";
+    }
 
+    var div = document.getElementById("output_es5")
+    div.innerText = getMessge();
 
+</script>
 <!-- ES6 사용하기 -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+    const name = "abc";
+    let age  = 10;
+    const getMessage = function getMessage(params){
+        return "Hello, ES5 world";
+    }
+    const div = document.getElementById("output_es6")
+    div.innerText = getMessge();
+
+</script>
