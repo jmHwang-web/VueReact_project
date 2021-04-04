@@ -105,3 +105,85 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            awesome:true,
+        },
+
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app2",
+        data: {
+            awesome:true,
+        },
+
+    });
+
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app3",
+        data: {
+            awesome:true,
+        },
+        //template: ``,
+        methods: {
+            clickBind:function(event){
+                /* if(this.$data.awesome){
+                    //this.$data.awesome = false;
+                    this.$set(this.$data, "awesome", false);
+                }else{
+                    this.$set(this.$data, "awesome", true);
+                }*/
+
+                this.$set(this.$data, "awesome",!this.$data.awesome)
+
+            }
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+
+new Vue({
+    /* edtmc^2w */
+    el: "#app5",
+    data: {
+
+    },
+    //template: ``,
+    methods: {
+        clickBind:function(event){
+                //this.$set(this.$data, "type", this.$data.type+1);
+                var type = this.$data.ype+1
+                if(type>=4){
+                    this.$set(this.$data,"type",type);
+                }
+                this.$(set)(this$data, "type", (this.$data.type+1%4))
+            }
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+});
+
+</script>

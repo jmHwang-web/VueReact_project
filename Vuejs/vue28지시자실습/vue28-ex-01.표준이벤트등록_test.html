@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vue28-ex-01.표준이벤트등록</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css" />
+
+    <style>
+        ul {
+            float: left;
+            margin: 10px 30px;
+        }
+
+        #id2 {
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+        }
+
+        span {
+            width: 70px;
+            height: 50px;
+            float: left;
+            background-color: red;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        hr {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+
+      "vue25-13-ex1.이벤트바인딩.html" 를 참고하여 이벤트를 설정하시오.
+
+      a 를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
+        1. a 태그의 href 값을 가져온다.
+        2. id="img2" 의 src 에 1번에서 얻은 href의 값을 넣는다.
+        3. a 태그의 redirect 기능을 취소하시오.
+
+      id="but1" 인 엘리먼트에 mouseover, mouseout 효과 넣기
+      id="img-swap"인 엘리멘트에 mouseover, mouseout 효과 넣기
+      span 엘리먼트에 mouseover, mouseout, mousedown, mouseup 효과 넣기
+      id="sel" 엘리먼트에 change 효과 넣기
+      id="ID" 엘리먼트에 focus, blur 효과 넣기
+
+      참고 : https://kr.vuejs.org/v2/guide/forms.html#header
+    </pre>
+    <hr />
+
+    <div id="app">
+        <xmp>
+            글자를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
+            a 태그에 click 이벤트 핸들러를 작성하시오. ==> imageclick
+        </xmp>
+        <ul>
+            <li>
+                <a class="image3" href="../images/image3.jpg" v-on:click="imageclick">
+                    강아지 사진
+                </a>
+            </li>
+            <li>
+                <a class="image3" href="../images/image4.jpg" v-on:click="imageclick">
+                    고양이 사진
+                </a>
+            </li>
+        </ul>
+
+        <img id="img2" v-bind:src="img_image3" />
+        <hr />
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            img_image3:null,
+
+        },
+        //template: ``,
+        methods: {
+            imageclick:function(event){
+                console.log(event.target.href);
+                //this.$data.img_image3 = event.target.href;
+                this.$set(this.$data, "img_image3",event.target.href);
+                event.stopPropagation();
+                event.preventDefault();
+
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+          /*  img_image3:function(){
+                return this.$data.numInput ? this.$data.numInput:10;
+            }*/
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+
+</script>

@@ -47,8 +47,8 @@
             Vue.js 에서 이벤트 핸들러에 매개변수를 넘기는 방법. <br>
             event.target.dataset 을 사용하여 접근.
         </p>
-        <div>10씩 증가: {{sum10}}</div>
-        <button v-on:click="clickBtn10" data-num="10">10씩 증가</button>
+        <div>{{computedNumInput}}씩 증가: {{sum10}}</div>
+        <button v-on:click="clickBtn10" v-bind:data-num="computedNumInput">{{computedNumInput}}씩 증가</button>
         <hr />
     </div>
 
@@ -57,3 +57,57 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            sum1:null,
+            numInput:null,
+            sumInput:null,
+            sum10:null,
+
+        },
+        //template: ``,
+        methods: {
+            clickBtn1:function(event){
+                console.log(event.target);
+                this.$set(this.$data, "sum1", this.$data.sum1+1);
+            },clickBtnInput:function(event){
+                console.log(event.target);
+                //this.$data.sumInput = Number(this.$data.sumInput)+Number(this.$data.numInput);
+                this.$set(this.$data, "sumInput",Number(this.$data.sumInput)+Number(this.$data.numInput) )
+
+            },clickBtn10:function(event){
+                console.log(event.target);
+                //debugger;
+                var num = Number(event.target.dataset.num); //data-num = "10";
+                this.$data.sum10 = Number(this.$data.sum10) +num;
+
+
+            },
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            computedNumInput:function(){
+                return this.$data.numInput ? this.$data.numInput:10;
+            }
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>

@@ -36,11 +36,57 @@
     <div id="app">
         {{ message }}
         <!-- 버튼 기능 추가-->
-
+        <button v-on:click="btnclick">버튼기능추가</button>
     </div>
 
-    
-    
+
+
 </body>
 </html>
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message:"Hello vue.js",
+        },
+        beforeCreate:{
+            function(){
+                console.log("beforeCreate");
+            },
+        },
+        created:function(){
+            console.log("created");
+        },
+        //template: ``,
+        methods: {
+            btnclick:function(event){
+                this.$set(this.$data, "message", "내이름");
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        beforeUpdate:function() {
+            console.log("beforeUpdate");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
