@@ -107,11 +107,11 @@ var componentChild = {
         }
     },
     template: `
-    <component-child
-            v-bind:num      ="counter"
-            v-on:add-counter="addCounter"
-            v-on:sub-counter="subCounter">
-        </component-child>
+    <div class="component-child">
+              Child counter : {{ num }} <br>
+              <button name="child" v-on:click="addCounter">+</button>
+              <button name="child" v-on:click="subCounter">-</button>
+          </div>
     `,
     methods:{
       addCounter : function(event){
