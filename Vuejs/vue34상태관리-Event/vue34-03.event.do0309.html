@@ -53,4 +53,82 @@
 </body>
 </html>
 
-<!-- vue 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   --><!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  var childeComponent = {
+      /* pdtmc^2w */
+      props: [] ,
+      data: function() {
+          return {
+
+          }
+      },
+      template: `
+      <div>
+                <button v-on:click="showLog">show</button>
+            </div>
+      `,
+      methods: {
+            showLog:function(event){
+                //부모에게 보낼 이벤트 발생
+                //질문 . 부모에게 보낼 이벤트는 어디서 정의하나? 태그 선언시에 정의됨
+                //<child-compnent v-on:show-log="printText"></child-component>
+                this.$emit("show-log","abc",123);
+            }
+      },
+      components: {
+          /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+      },
+      computed: {
+          /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+
+      },
+      watch: {
+          /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+      },
+      mounted: function() {
+          console.log("mounted");
+      },
+      updated: function() {
+          console.log("updated");
+      },
+  };
+
+
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        mesg:null
+    },
+    //template: ``,
+    methods: {
+        printText:function(param1, param2){
+            console.log(arguments);
+            debugger;
+            //this.$data.mesg = arguments.toString();
+            this.$data.mesg = `${param1} : ${param2}`;
+        }
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+        "child-component":childeComponent,
+    },
+    computed: {
+
+    },
+    watch: {
+
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+});
+
+</script>

@@ -111,6 +111,118 @@
     </div>
 </body>
 
+<script type="text/template" id="template3">
+
+<div id="app3">
+        <div>
+            <input id="name" type="text" v-model:value="name" />
+            <span style="font-size:1.2em; font-weight:bold; border: 1px dashed blue;padding: 0 20px;">
+                Message : {{ name }}
+             </span>
+        </div>
+        <hr>
+         <div>
+            <p style="white-space: pre-line;"><span>Multiline message is:</span> {{ message }}</p>
+            <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        </div>
+        <hr>
+
+        <div>
+            <input type="checkbox" id="checkbox" v-model:checked="checked">
+            <label for="checkbox">{{ checked }}</label>
+        </div>
+        <hr>
+
+        <div id='example-3'>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+        <hr>
+
+        <div>
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </div>
+        <hr>
+
+        <div>
+            <select v-model:selected="selected">
+                <option disabled value="">Please select one</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+        <br>
+
+        <div>
+            <h3>options with v-for</h3>
+            <select v-model="selected">
+                <option v-for="(option,i) in options" v-bind:value="option.value">
+                    {{i}} : {{ option.text }}
+                </option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+  </div>
+
+
+<hr>
+
+</script>
+
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+new Vue({
+    /* edtmc^2w */
+    el: "#app3",
+    data: {
+        name:null,
+        message:null,
+        checked:null,
+        checkedNames:[],
+        selected:null,
+        picked:null,
+        options:[{text:"A",value:"A"},{text:"B",value:"B"},{text:"C",value:"C"}]
+    },
+    template: "#template3",
+    methods: {
+
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+    computed: {
+
+    },
+    watch: {
+
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+});
+
+</script>

@@ -210,7 +210,7 @@
     ]
 
     todoItems에서 최대 id 값을 구하는 방법.
-        방법1. todoItems.reduce()
+        방법1. todoItems.reduce() 를 사용하는 방법
         방법2. todoItems.map() 를 사용하는 방법
 
     기능 추가
@@ -277,7 +277,7 @@
                     {{ todoItem.todo }}
                     <span class="removeBtn"
                           type="button"
-                          v-on:click.stop="removeTodo(todoItem.id, index)">
+                          v-on:click="removeTodo(todoItem.id, index)">
                         <i class="far fa-trash-alt" aria-hidden="true"></i>
                     </span>
                 </li>
@@ -296,3 +296,106 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    var vm = new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            newTodoItem: null,
+            showModal: null,
+            todoItems: [
+                { id: 1, todo: "영화보기", done: false },
+                { id: 2, todo: "주말 산책", done: true },
+                { id: 3, todo: "ES6 학습", done: false },
+                { id: 4, todo: "잠실 야구장", done: false }
+            ],
+        },
+        //template: ``,
+        methods: {
+            checked: function(done) {
+                // "checked(todoItem.done)"  <==> "todoItem.done ? 'checked': ''"
+                if(done){
+                    return "checked";// 또는 {checked: true}
+                }
+                else {
+                    return null; // 또는 {checked: false}
+                }
+            },
+            addTodo: function(event){
+                console.log(event.target);
+
+                //최대 id 값을 구하는 방법.
+                //방법1. array.reduce() 를 사용하는 방법
+                //방법2. array.map() 를 사용하는 방법
+
+                var maxObj = null;
+                if( this.$data.todoItems.length === 0 ){
+                    maxObj = {
+                        id: 0,
+                    }
+                }
+                else {
+                    maxObj = this.$data.todoItems.reduce( (preItem, curItem, index, array)=>{
+                        // 최대 id 값을 갖고 있는 item을 반환.
+                        if(preItem.id > curItem.id ) {
+                            return preItem;
+                        }
+                        else {
+                            return curItem;
+                        }
+                        /// return preItem.id > curItem.id ? preItem : curItem;
+                    })
+                }
+
+                var todo = {
+                    id: maxObj.id + 1,
+                    done: false,
+                    todo: this.$data.newTodoItem,
+                }
+                //this.$data.todoItems.push( todo );
+                //this.$data.todoItems[ this.$data.todoItems ] = todo;
+                this.$set( this.$data.todoItems, this.$data.todoItems.length, todo );
+
+                 // input 태그의 입력값 지우기.
+                //this.$data.newTodoItem = "";
+                this.$set( this.$data, "newTodoItem", "");
+            },
+            doneToggle: function(id, index){
+                debugger;
+                //this.$data.todoItems[index].done = !this.$data.todoItems[index].done;
+                this.$set( this.$data.todoItems[index], "done", !this.$data.todoItems[index].done );
+            },
+            removeTodo: function(id, index){
+                // 한개 삭제
+                this.$data.todoItems.splice( index, 1);
+
+                // 이벤트 취소:
+                event.stopPropagation();
+                evnet.preventDefault();
+            },
+            clearAll: function(event){
+                //전체삭제
+               // this.$data.todoItems = [];
+               this.$set(this.$data, "todoItems", []);
+            },
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>

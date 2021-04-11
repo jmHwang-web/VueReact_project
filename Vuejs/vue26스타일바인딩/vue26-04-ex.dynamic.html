@@ -69,3 +69,59 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            //msg:null,
+            state:"ready",
+        },
+        //template: ``,
+        methods: {
+            change : function(event){
+                console.log(event.target.className);
+
+                if(event.target.className == "ready"){
+                   // this.$data.state = "active";
+                   this.$set(this.$data, "state","active");
+                }
+
+
+                else if(event.target.className == "active"){
+                    //this.$data.state = "done";
+                    this.$set(this.$data, "state","done");
+                }
+
+
+                else if(event.target.className == "done"){
+                    //this.$data.state = "ready";
+                    this.$set(this.$data, "state","ready");
+                }
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            msg:function(value){
+                return this.$data.state;
+            }
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>

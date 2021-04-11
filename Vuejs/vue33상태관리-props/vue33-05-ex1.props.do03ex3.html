@@ -35,7 +35,7 @@
     <hr>
     <div id="app">
         <!-- 기억이 잘 안나시면 아래 형식을 참고하세요. -->
-        <!-- v-bind:props속성="상위 컴포넌트 데이터 속성" -->
+        <!-- v-bind:자식의 props속성="상위 부모의 컴포넌트 데이터 속성" -->
         <component-top v-bind:propsdata="msgTop"></component-top>
 
         <!-- #할일 3 -->
@@ -46,3 +46,74 @@
 </body>
 
 </html>
+
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+
+    var compTop = {
+        /* pdtmc^2w */
+        props: ["propsdata"] ,
+        data: function() {
+            return {
+
+            }
+        },
+        template: `
+        <p>{{ propsdata }}</p>
+        `,
+
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+
+
+    };
+
+    var compBottom = {
+    /* pdtmc^2w */
+    props: ["propsdata"] ,
+        data: function() {
+            return {
+
+            }
+        },
+        template: `
+        <p>{{ propsdata }}</p>
+        `,
+    }
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            msgTop:"Top message!!! passed from Parent Component",
+            msgBtm:"Bottom message!!! passed from Parent Component",
+        },
+        //template: ``,
+           component-top components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            "component-top":compTop,
+           "component-bottom":compBottom
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>

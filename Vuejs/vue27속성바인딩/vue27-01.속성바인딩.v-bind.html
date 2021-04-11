@@ -74,6 +74,26 @@
             <img v-bind:src="imagePath" />
         </p>
     </div>
+    <script type="text/template" id="template1">
+        <div id="app1">
+            <p v-bind:id="idA">
+                <button v-on:click="clickBindId">클릭</button>
+                아이디 바인딩
+            </p>
+            <p v-bind:class="classA">
+                <button v-on:click="clickBindClass">클릭</button>
+                클래스 바인딩
+            </p>
+            <p v-bind:style="styleA">
+                <button v-on:click="clickBindStyle">클릭</button>
+                스타일 바인딩
+            </p>
+            <p>
+            <button v-on:click="clickBindValue">클릭</button>
+            <input id="a" type="text" v-bind:value="message">
+        </p>
+        </div>
+    </script>
 
     <hr>
 
@@ -82,3 +102,64 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            idA:null,
+            classA:null,
+            styleA:null,
+            message:null,
+            imagePath:null
+
+        },
+        template: "#template1",
+        methods: {
+            clickBindId:function(event){
+                this.$set(this.$data, "id", "클릭후id값")
+            },
+            clickBinClass:function(event){
+                this.$set(this.$data, "classA", "클릭후Class값")
+            },
+            clickBindStyle:function(event){
+                this.$set(this.$data, "styleA", "클릭후id값")
+                this.$data.styleA= {
+                    color:"red",
+                    fontWeight:"bold",
+                    fontSize:"20pt",
+                }
+            },
+            clickBindValue:function(event){
+                this.$set(this.$data,"message","v-bind 지시자")
+            },
+            clickBindSrc:function(event){
+                this.$data.imagePath = ""
+                this.$set(this.$data,"imagePath","v-bind 지시자")
+            }
+
+
+
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>

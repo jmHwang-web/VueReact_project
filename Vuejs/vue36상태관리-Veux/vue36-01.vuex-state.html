@@ -93,3 +93,88 @@
 
 <!-- vue 플러그인 임포트   -->
 
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+    var store = new Vuex.Store({
+        actions:{
+            increment : function(mutations, param){
+                mutations.commit("increment", param);
+            },
+            decrement:function(mutations, param){
+                mutations.commit("decrement", param);
+            },
+        },
+        mutations:{
+            increment : function(state, param){
+               // debugger;
+                state.counter = state.counter + param;
+            },
+            decrement:function(state, param){
+                state.counter = state.counter + param;
+            },
+        },
+        state:{
+            welcome:"Hellow World",
+            counter:0,
+        },
+        getters:{
+            welcome: function(state){
+                return state.welcome;
+            },
+            counter: function(state){
+                return state.counter;
+            }
+        }
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            header:"Vuex 사용 앱",
+            //welcome:"Hellow World",
+            //counter:0,
+        },
+        //template: ``,
+        methods: {
+            increment:function(event){
+             //   this.$set(this.$data,"counter", this.$data.counter+1 )
+             store.dispatch("increment",+1);
+            },
+            decrement:function(event){
+               // this.$set(this.$data,"counter", this.$data.counter-1 )
+               store.dispatch("decrement",-1);
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            welcome:function(){
+                return store.getters.welcome;
+
+            },
+             counter:function(){
+                return store.getters.counter;
+
+            }
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
+

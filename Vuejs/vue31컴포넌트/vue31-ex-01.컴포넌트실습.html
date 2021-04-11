@@ -78,37 +78,134 @@
 
     <div id="app">
         <!-- component-header -->
-        <header>
-            Header
-        </header>
-        
+        <compheader ></compheader>
         <!-- component-content -->
-        <div id="content">
-            <p>Content</p>
-            
-            <!-- component-aside -->
-            <aside>
-                Aside
-            </aside>
-            
-            <!-- component-content-list -->
-            <div id="content-list">
-                List
-            </div>
-        </div>
-        
+        <compcontent>
+        </compcontent>
+
         <!-- component-footer -->
-        <footer>
-            Footer
-        </footer>
+            <compfooter></compfooter>
+
     </div>
 
-    
+
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+
+var componentHeader = {
+    /* pdtmc^2w */
+    props: [] ,
+    data: function() {
+        return {
+
+        }
+    },
+    template: `
+    <header>
+            Header
+        </header>
+    `,
+    methods: {
+
+    },
+};
+
+var  componentAside = {
+    /* pdtmc^2w */
+    template: `
+    <aside>
+                Aside
+            </aside>
+
+    `,
+
+};
+
+var  componentList = {
+    /* pdtmc^2w */
+    template: `
+    <div id="content-list">
+                List
+            </div>
+    `,
+
+};
+
+
+
+var  componentContent = {
+    /* pdtmc^2w */
+    props: [] ,
+    data: function() {
+        return {
+
+        }
+    },
+    template: `
+    <div id="content">
+            <component-aside></component-aside>
+            <component-list></component-list>
+     </div>
+    `,
+    components: {
+        "component-aside":componentAside,
+        "component-list":componentList
+        },
+};
+
+
+
+
+var  componentFooter = {
+    /* pdtmc^2w */
+    template: `
+    <footer>
+        footer
+            </footer>
+    `,
+
+};
+
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+
+        },
+        //template: ``,
+        methods: {
+
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            "compheader":componentHeader,
+            "compcontent":componentContent,
+            "compfooter": componentFooter
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
 
 
 

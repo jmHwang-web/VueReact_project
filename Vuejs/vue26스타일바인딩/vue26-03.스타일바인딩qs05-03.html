@@ -136,3 +136,104 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+   new Vue({
+        /* edtmc^2w */
+        el: "#example3",
+        data: {
+            style1:null,
+        },
+        //template: ``,
+        methods: {
+            clickArrow:function(event){
+                this.$set(
+                    this.$data,
+                    "style1",
+                    {
+                    height:"50px",
+                    width:"150px",
+                    border:"1px solid black",
+                    textAlign:"center",
+                    lineHeight:"50px",
+                    fontWeight:"800",
+                    color:"red",
+                    backgroundColor:"darkgoldenrod",
+                    padding:"50px"
+                }
+              )
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#eljvs",
+        data: {
+            style1:{
+                /*"
+                 width: 100px;
+                 height: 50px;
+                 border: 1px solid black;
+                 text-align: center;
+                 line-height: 50px;"
+                 */
+
+                 width: "100px",
+                 height:"50px",
+                 border:"1px solid black",
+                 textAlign:"center",
+                 lineHeight:"50px",
+            }
+        },
+        //template: ``,
+        methods: {
+            overEvent:function(event){
+
+            }, outEvent:function(event){
+
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
