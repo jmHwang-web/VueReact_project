@@ -101,8 +101,124 @@
         </div>
 
     </div>
+
+    <script type="text/x-template"  id="template1">
+        <div id="app">
+            <h1> axios 사용할 때 </h1>
+            <div>
+                <div>
+                    <a href="#" id="menu1" v-on:click="clickMenu1">메뉴 보기 1:</a>
+                </div>
+                <br>
+                <a href="http://localhost:5050/text" target="_blank">http://localhost:5050/text</a>
+                <p>
+                    <span id="message1" v-text="message1"> ? </span>
+                </p>
+            </div>
+        </div>
+
+    </script>
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message1:null,
+            message2:null,
+            message3:null,
+        },
+        template: `#template1`,
+        methods: {
+            clickMenu1:function(event){
+                // import axios from "axios";
+
+                axios({
+                    url: "http://localhost:5050/text",  // 호출되는 서버 주소.
+                    method: "get",       // request method: get, post, delete, put
+                    params: { },  // 서버로 보내는 데이터. 예시) { data1:"test1", data2:"test2" }
+                    timeout: 30000,    // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+                    responseType: "text",  // response로 넘어오는 데이터 형태: text, html, xml, json, jsonp, script
+                })
+                .then( (res) => {
+                    debugger;
+                    console.log(res.data);
+                    //this.$data.message1 = res.data;
+                    this.$set(this.$data, "message1",res.data);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
+            clickMenu2:function(event){
+                // import axios from "axios";
+
+                axios({
+                    url: "http://localhost:5050/text",  // 호출되는 서버 주소.
+                    method: "get",       // request method: get, post, delete, put
+                    params: { },  // 서버로 보내는 데이터. 예시) { data1:"test1", data2:"test2" }
+                    timeout: 30000,    // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+                    responseType: "text",  // response로 넘어오는 데이터 형태: text, html, xml, json, jsonp, script
+                })
+                .then( (res) => {
+                    debugger;
+                    console.log(res.data);
+                    //this.$data.message1 = res.data;
+                    this.$set(this.$data, "message2",res.data);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
+            clickMenu3:function(event){
+                // import axios from "axios";
+
+                axios({
+                    url: "http://localhost:5050/text",  // 호출되는 서버 주소.
+                    method: "get",       // request method: get, post, delete, put
+                    params: { },  // 서버로 보내는 데이터. 예시) { data1:"test1", data2:"test2" }
+                    timeout: 30000,    // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+                    responseType: "text",  // response로 넘어오는 데이터 형태: text, html, xml, json, jsonp, script
+                })
+                .then( (res) => {
+                    debugger;
+                    console.log(res.data);
+                    //this.$data.message1 = res.data;
+                    this.$set(this.$data, "message3",res.data);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            },
+        },
+
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
