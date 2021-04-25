@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-
-    <link rel="stylesheet" href="../css/reset.css" />
-</head>
-
-<body>
-    <xmp>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible"
+            content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet"
+            href="../css/reset.css" />
+    </head>
+    <body>
+        <xmp>
         클래스 컴포넌트를 만드는 방법을 반복한다.
         html 을 JSX로 변환 할 때의 규칙을 학습한다.
         아래의 HTML 태그를 이용하여 그림처럼 출력되게 작성하시오.
@@ -35,13 +35,83 @@
             </header>
         </div>
     </xmp>
-    <hr>
-
-    <div id="app">
-        여기에 표시
-    </div>
-</body>
-
+        <hr>
+        <div id="app"> 여기에 표시 </div>
+    </body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.min.js">
+    /*  import ReactRouterDOM, {BroswerRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js">
+    /* import Redux from "redux" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.2/react-redux.js">
+    /*  import ReactRedux, {Provider} from "react-redux" */
+</script>
+<script src="https://unpkg.com/immer">
+    /* 불변객체 state를 조작하는 라이브러리 */
+    /* import immer from "immer" */
+</script>
+<script type="text/babel">
+    console.log(React);
+    console.log(ReactDOM);
 
+    class Comp extends React.Component {
+        // 컴포넌트의 변수 초기값 설정
+        state = { mesg: "  React!!!!", count: 0, }
+        constructor(props) {
+            super()
 
+            // this 바인딩
+            this.handler = this.handler.bind(this);
+
+            // ref 생성. React.createRef()
+            this.inputref = React.createRef();
+        }
+        componentDidMount() {
+            // 마운트 완료 후에  : 한번만
+        }
+        componentDidUpdate() {
+            // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+            console.log(this.state); //this.stas
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 : 페이지 unload 될 때 한번.
+        }
+        handler(e) {
+            // 이벤트 핸들러는 constructor(생성자)에서 this를 bind() 처리해야 한다
+        }
+        handler = (event) => {
+            // 이벤트 핸들러를 화살표 함수로 만들면 this를 bind() 생략해도 된다
+        }
+
+        render() {
+            // 화면 처리. JSX
+            return (
+                <div className="App">
+                    <header className="App-header">
+                        <img src="../images/logo.svg" className="App-logo" alt="logo" />
+
+                        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+                            Learn React
+                            </a>
+                    </header>
+                </div>
+            );
+        }
+    };
+
+    // React.Component 를 화면에 붙이는 작업.
+    ReactDOM.render(
+        <Comp></Comp>, document.getElementById("app")
+    );
+</script>
