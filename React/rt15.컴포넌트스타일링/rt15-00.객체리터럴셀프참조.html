@@ -36,3 +36,20 @@
 </body>
 
 </html>
+<script>
+
+    var lit = {
+                a: 'a',
+                b: this.a + 'b'
+            }
+
+    var lit2 ={
+        a: 'a',
+        get b(){
+            return this.a +'b'
+        }
+    }
+    console.log(lit.a); // "a"
+    console.log(lit.b); // "ab" 가 출력되나요? 아니요. 어떻게 해야 할까?
+
+</script>

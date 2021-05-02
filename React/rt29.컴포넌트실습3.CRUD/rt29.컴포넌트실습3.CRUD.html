@@ -251,3 +251,529 @@
 </html>
 
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.min.js">
+    /*  import ReactRouterDOM, {BroswerRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js">
+    /* import Redux from "redux" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.2/react-redux.js">
+    /*  import ReactRedux, {Provider} from "react-redux" */
+</script>
+<script src="https://unpkg.com/immer">
+    /* 불변객체 state를 조작하는 라이브러리 */
+    /* import immer from "immer" */
+</script>
+<script type="text/babel">
+    //import React, {Component, PureComponent, Fragment} from "react";
+    //import Redux from "redux";
+    //import ReactRedux, {Provider} from "react-redux";
+    //import {BrowserRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom";
+    //import ReactDOM from "react-dom";
+
+    console.log(React);
+
+    class CrudInput extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            // 상태값(변수)을 정의한다.
+
+        }
+        style = {
+            // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+            // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+        }
+        func = {
+            // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+            // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+            // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+        }
+        constructor(props) {
+            super()
+            // this 바인딩. 예시) this.handler = this.handler.bind(this)
+            // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+            // ref 만들기. 예시) this.inputref = React.createRef()
+            this.refUserName = React.createRef();
+            this.refUserPower = React.createRef();
+
+        }
+        componentDidMount() {
+            // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+            // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+            // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+        }
+        doIns = (event)=>{
+            // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+            if(this.refUserName.current.value.trim() ===''){
+                alert("이름을입력하세요");
+                this.refUserName.current.focus()
+                event.preventDefault();//이벤트 버블링 취소
+                return false;
+            }
+
+
+            console.log(event.target)
+            const newitem = {
+                name:this.refUserName.current.value,
+                power : Number(this.refUserPower.current.value),
+            }
+            //CrudApp.func.doIns
+            this.props.doIns(newitem);
+            //입력값 지우기(초기화)
+            this.refUserName.current.value = "";
+            this.refUserPower.current.value = 0;
+        }
+        render() { // JSX로 화면 만들기
+            return (
+                <div>
+                    <div>
+                        <div>
+                            <label htmlFor="">Name : </label>
+                            <input type="text" name="name"
+                             placeholder="이름을 입력하세요"
+                             ref={this.refUserName}
+                             defaultValue={""}
+                             />
+                        </div>
+                        <div>
+                            <label htmlFor="">Power : </label>
+                            <input type="text" name="power"
+                            placeholder="숫자를 입력하세요"
+                             ref={this.refUserPower}
+                             defaultValue={"0"}
+                             />
+                        </div>
+                        <button onClick={this.doIns}>Add</button>
+                    </div>
+                </div>
+            )
+        }
+    };
+    //export default rt29.컴포넌트실습3.CRUD;
+
+//import React, {Component, PureComponent, Fragment} from "react";
+//import Redux from "redux";
+//import ReactRedux, {Provider} from "react-redux";
+//import {BrowserRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom";
+//import ReactDOM from "react-dom";
+
+console.log(React);
+
+//import React, {Component, PureComponent, Fragment} from "react";
+//import Redux from "redux";
+//import ReactRedux, {Provider} from "react-redux";
+//import {BrowserRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom";
+//import ReactDOM from "react-dom";
+
+console.log(React);
+
+class CrudListItem extends React.Component {
+
+    static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+    static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+    state = {
+        // 상태값(변수)을 정의한다.
+        isEditMode : false
+    }
+    style = {
+        // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+        // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+    }
+    func = {
+        // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+        // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+        // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+    }
+    constructor(props) {
+        super()
+        // this 바인딩. 예시) this.handler = this.handler.bind(this)
+        // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+        // ref 만들기. 예시) this.inputref = React.createRef()
+        // ref 만들기. 예시) this.inputref = React.createRef()
+        this.refUserName = React.createRef();
+        this.refUserPower = React.createRef();
+    }
+    componentDidMount() {
+        // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+        // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+    }
+    componentDidUpdate(prevProps, prevState) {
+        // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+    }
+    componentWillUnmount() {
+        // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+        // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+    }
+    doDel = (event)=>{
+        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+        console.log(event.target)
+
+        const {item} = this.props;
+        this.props.doDel(item);
+    }
+    doEdit = (event)=>{
+        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+        console.log(event.target)
+
+        const {item} = this.props;
+        //this.props.doEdit(item);
+        this.setState({
+            ...this.state,
+            isEditMode : !this.state.isEditMode
+        })
+    }
+    doUp = (event)=>{
+        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+        console.log(event.target)
+
+        const {item} = this.props;
+        this.props.doUp(item);
+    }
+    doDown = (event)=>{
+        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+        console.log(event.target)
+
+        const {item} = this.props;
+        this.props.doDown(item);
+    }
+    doSave = (event)=>{
+        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+        const {item} = this.props;
+        console.log(event.target)
+        //debugger;
+        const newitem = {
+                id: item.id,
+                name:this.refUserName.current.value,
+                power : Number(this.refUserPower.current.value),
+         }
+
+         this.props.doSave(newitem);
+
+        this.setState({
+            ...this.state,
+            isEditMode : !this.state.isEditMode
+        })
+    }
+    render() { // JSX로 화면 만들기
+        const {item} = this.props;
+        let strong = null;
+        if(item.power >= 300){
+            strong="strong";
+        }
+
+        var formEdit=(
+            <tr key={item.id} className={"strong"}>
+                    <td>{item.id}</td>
+                    <td>
+                        <input
+                            type="text"
+                            name="name"
+                            ref={this.refUserName }
+                            defaultValue={item.name}
+                        />
+                    </td>
+                    <td>
+                        <input
+                            type="text"
+                            name="power"
+                            ref={this.refUserPower }
+                            defaultValue={item.power}
+                        />
+                    </td>
+                    <td>
+                        <button onClick={this.doUp}>Power Up</button>
+                        <button onClick={this.doDown}>Power Down</button>
+                        <button onClick={this.doSave}>Save</button>
+                    </td>
+            </tr>
+        )
+
+
+        var formView =(
+            <tr className={strong} key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.power}</td>
+                <td>
+                    <button onClick={this.doDel}>Del</button>
+                    <button onClick={this.doUp}>Power Up</button>
+                    <button onClick={this.doDown}>Power Down</button>
+                    <button onClick={this.doEdit}>Edit</button>
+                </td>
+            </tr>
+        )
+
+        if(this.state.isEditMode){
+            return formEdit;
+
+        }else{
+            return formView;
+        }
+
+
+
+    }
+};
+//export default CrudListItem;
+
+class CrudAPP extends React.Component {
+
+    static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+    static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+    state = {
+        // 상태값(변수)을 정의한다.
+        items :  [
+                {id:1, name: "슈퍼맨", power: 100},
+                {id:2, name: "아쿠아맨", power: 300},
+                {id:3, name: "스파이더맨", power: 500},
+                {id:4, name: "배트맨", power: 30},
+            ]
+    }
+    style = {
+        // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+        // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+    }
+    func = {
+        // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+        // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+        // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+        doDel(item){
+            debugger;
+            const newItems = this.state.items.filter((element, index)=>{
+                return element.id !== item.id
+            });
+
+            this.setState({
+                ...this.state,
+                items:newItems,
+            })
+        },
+        doUp(item){
+            //item.power = item.power + 100;
+            const newItems = this.state.items.filter((element, index)=>{
+              if(element.id === item.id){
+                element.power = Number(element.power)+100;
+              }
+              return element;
+            });
+
+            this.setState({
+                ...this.state,
+                items:newItems,
+            })
+
+        },
+        doDown(item){
+            const newItems = this.state.items.filter((element, index)=>{
+              if(element.id === item.id){
+                element.power = Number(element.power)-50;
+              }
+              return element;
+            });
+
+            this.setState({
+                ...this.state,
+                items:newItems,
+            })
+
+        },
+        doIns(item){
+            let maxObj = null;
+            if(this.state.items.length>0){
+                maxObj = this.state.items.reduce( function(prev, next){
+                        return prev.id > next.id ? prev:  next  // 최대값 id가 있는 객체
+                        /*return prev.id < next.id ? prev:  next  // 최소값 id가 있는 객체*/
+                    })
+
+             }else{
+                 maxObj ={
+                     id:0,
+                 }
+             }
+            //unique id 만들기
+             item.id = maxObj.id + 1;
+
+             const newitem ={
+                 id: maxObj.id+1,
+                 ...item,
+             }
+             const newitems = [...this.state.items, newitem]; //새로운 object array 만들기
+
+             this.setState({
+                ...this.state,
+                items:newitems,
+             })
+
+
+        },
+
+        doSave(item){ //doEdit 대신 doSave
+            const newItems = this.state.items.map((element, index)=>{
+              if(element.id === item.id){
+                return item;
+              }
+              return element;
+            });
+
+            this.setState({
+                ...this.state,
+                items:newItems,
+            })
+    },
+
+    }
+    constructor(props) {
+        super()
+        // this 바인딩. 예시) this.handler = this.handler.bind(this)
+        // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+        // ref 만들기. 예시) this.inputref = React.createRef()
+        this.func.doIns = this.func.doIns.bind(this);
+        this.func.doDel = this.func.doDel.bind(this);
+        this.func.doUp = this.func.doUp.bind(this);
+        this.func.doSave = this.func.doSave.bind(this);
+        this.func.doDown = this.func.doDown.bind(this);
+    }
+
+    componentDidMount() {
+        // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+        // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+    }
+    componentDidUpdate(prevProps, prevState) {
+        // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+    }
+    componentWillUnmount() {
+        // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+        // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+    }
+    handler = (event)=>{
+        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+        console.log(event.target)
+    }
+    render() { // JSX로 화면 만들기
+        return (
+
+            <div>
+                <h1>Creat Read Update Delete</h1>
+        <div>
+         <CrudInput {...this.state} {...this.func}></CrudInput>
+        <hr/>
+            <CrudList  {...this.state} {...this.func}></CrudList>
+            </div>
+            </div>
+        )
+    }
+};
+//export default CrudAPP;
+
+//import React, {Component, PureComponent, Fragment} from "react";
+//import Redux from "redux";
+//import ReactRedux, {Provider} from "react-redux";
+//import {BrowserRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom";
+//import ReactDOM from "react-dom";
+
+console.log(React);
+
+class CrudList extends React.Component {
+
+    static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+    static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+    state = {
+        // 상태값(변수)을 정의한다.
+
+    }
+    style = {
+        // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+        // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+    }
+    func = {
+        // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+        // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+        // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+    }
+    constructor(props) {
+        super()
+        // this 바인딩. 예시) this.handler = this.handler.bind(this)
+        // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+        // ref 만들기. 예시) this.inputref = React.createRef()
+
+    }
+    componentDidMount() {
+        // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+        // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+    }
+    componentDidUpdate(prevProps, prevState) {
+        // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+    }
+    componentWillUnmount() {
+        // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+        // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+    }
+    handler = (event)=>{
+        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+        console.log(event.target)
+    }
+    render() { // JSX로 화면 만들기
+        const items = this.props.items;
+        const arrs = items.map( (item, index)=>{
+              return (
+                <CrudListItem key={item.id}  item={item} {...this.props}></CrudListItem>
+             )
+       })
+
+        return (
+            <div>
+                <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>POWER</th>
+                    <th>CRUD</th>
+                </tr>
+            </thead>
+            <tbody>
+                {arrs}
+            </tbody>
+        </table>
+
+            </div>
+        )
+    }
+};
+//export default CrudList;
+ReactDOM.render(
+    <CrudAPP></CrudAPP>
+    , document.getElementById("app")
+)
+
+
+</script>

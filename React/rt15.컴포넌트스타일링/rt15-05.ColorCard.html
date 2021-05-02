@@ -142,4 +142,64 @@
 </body>
 </html>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.min.js">
+    /*  import ReactRouterDOM, {BroswerRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js">
+    /* import Redux from "redux" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.2/react-redux.js">
+    /*  import ReactRedux, {Provider} from "react-redux" */
+</script>
+<script src="https://unpkg.com/immer">
+    /* 불변객체 state를 조작하는 라이브러리 */
+    /* import immer from "immer" */
+</script>
+<script type="text/babel">
+    //import React, {Component, PureComponent, Fragment} from "react";
+    //import Redux from "redux";
+    //import ReactRedux, {Provider} from "react-redux";
+    //import {BrowserRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom";
+    //import ReactDOM from "react-dom";
+
+    console.log(React);
+
+    class ColorCard extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            // 상태값(변수)을 정의한다.
+
+        }
+        style = {
+            // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+            // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+        }
+        handler = (event)=>{
+            // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+            console.log(event.target)
+        }
+        render() { // JSX로 화면 만들기
+            return (
+                <div>
+
+                </div>
+            )
+        }
+    };
+    //export default ColorCard;
+    
+</script>
+
 

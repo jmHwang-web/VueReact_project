@@ -65,7 +65,7 @@
 
     console.log(React);
 
-    class HelloWorld extends React.Component {
+    class ReactFragment extends React.Component {
 
         static defaultProps = {  /*  props의 디폴트 값 설정 */ }
         static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
@@ -122,14 +122,13 @@
 
     const loof = [1,2,3,4,5];
     ReactDOM.render(
-        <React.Fragment>
+        <ReactFragment>
             {
                 loof.map((value,index)=>{
                     return <HelloWorld index={value}></HelloWorld>
                 })
             }
-        </React.Fragment>
-
+        </ReactFragment>
         , document.getElementById("app")
     );
 
